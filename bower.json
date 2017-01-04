@@ -18,5 +18,8 @@
     "**/.*",
     "node_modules",
     "bower_components"
-  ]
+  ],
+  "dependencies": {
+    "angular-applicationinsights": "^0.2.8"
+  }
 }

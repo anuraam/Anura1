@@ -4,8 +4,11 @@
 (function () {
     "use strict";
 
-    angular.module('insightsApp', ['ngRoute', 'angular-appinsights'])
-        .config(['$routeProvider', 'insightsProvider', function ($routeProvider, insightsProvider) {
+    angular.module('insightsApp', ['ngRoute', 'ApplicationInsightsModule'])
+        .config(['$routeProvider', 'applicationInsightsServiceProvider', function ($routeProvider, applicationInsightsServiceProvider) {
+
+            var options = {applicationName:'insightsApp'};
+            applicationInsightsServiceProvider.configure('295bc8b8-b3fb-4efb-b1ff-dca0fe05b120', options );
 
             $routeProvider
                 .when('/', {
@@ -17,15 +20,15 @@
                 });
 
             // Add application insights id here
-            insightsProvider.start('295bc8b8-b3fb-4efb-b1ff-dca0fe05b120');
+            // 295bc8b8-b3fb-4efb-b1ff-dca0fe05b120
 
         }])
-        .controller('page1Controller', ['$scope', 'insights', function($scope, insights) {
+        .controller('page1Controller', ['$scope', 'applicationInsightsService', function($scope, applicationInsightsService) {
 
-            insights.logEvent('Page 1 Controller Activated');
+            applicationInsightsService.trackEvent('Page 1 Controller Activated');
 
             $scope.exit = function () {
-                insights.logEvent('User clicked the exit button');
+                applicationInsightsService.trackEvent('User clicked the exit button');
             };
         }]);
 
