@@ -17,7 +17,7 @@
                 });
 
             // Add application insights id here
-            insightsProvider.start('f5fa5059-6b68-4227-abdc-8d08066f6fec');
+            insightsProvider.start('295bc8b8-b3fb-4efb-b1ff-dca0fe05b120');
 
         }])
         .controller('page1Controller', ['$scope', 'insights', function($scope, insights) {
